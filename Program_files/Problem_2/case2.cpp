@@ -8,7 +8,7 @@ int main(int argc, char **argv)
     if(argc == 2 && strcmp(argv[1], "-h")==0) //help command 
    
     {
-        cout<<"The main purpose of this program is to how to use & Declare the order of construction and destruction of objects without using virtual functions"<<endl;
+        cout<<"The main purpose of this program is to how to  get Sum of N Natural Numbers"<<endl;
     }
     else
     {

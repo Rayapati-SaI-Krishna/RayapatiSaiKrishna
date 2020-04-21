@@ -15,12 +15,16 @@ int main(int argc, char **argv)
     int n;
     cout << "Enter N: ";
     cin >> n;
+    if(n>0){
     long sum = 0;
     for (int i = 1; i <= n; i++) 
     {
       sum += i * i; //square i and add it with sum
     } 
      cout << "Result is: " << sum<<endl;
+    } 
+        else
+         cout<<"Try to enter Integer values and postive numbers only";
     }
     
 

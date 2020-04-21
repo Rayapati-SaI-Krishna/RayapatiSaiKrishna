@@ -1,65 +1,40 @@
 #include <iostream> 
 #include<string.h>
 #include<stdlib.h>
-#include<cctype>
-
-#include<typeinfo>
-#include<bits/stdc++.h>
+#include<cmath>
 using namespace std; 
-  
 int main(int argc, char** argv) 
 { 
-  
-    char ch;//Declaring character datatype
-    int c,i;//Declaring integer datatype
-    double d;//Declaring double datatype
-   if(argc == 2 && strcmp(argv[1], "--help")==0)
-   
-    {cout<<"The main purpose of this program is to calculate the datatype,value and sizeof the value"<<endl;
-            cout<<"user can give the input in integer,float/double,char and string"<<endl;
-
-    }
-
-   else{
     
-    cout << "You have entered " << argc 
-         << " arguments:" << "\n";
-         
-  for(i=1;i<argc;i++)//for loop to increase the i value with respect to argument counter
-  {
-
-        if(argv[i]>=0)//if condition for checking whether the value greater than zero or not
-	{
-		c=atoi(argv[i]);//atol function accepts a string and convert to integer
-		d=atof(argv[i]);//atof function accepts a string and convert to float
-		cout<<"TYPE"<<"    "<<"value"<<"  "<<"size"<<endl;
-		if(c==d) //if condition for comparing the values
-		{
-                 cout<<"Integer"<<"   "<<c<<"   "<<sizeof(int)<<endl;
-		}
-		else
-		{
-		cout<<"Double"<<"   "<<d<<"    "<<sizeof(double)<<endl;
-		}
+     if(argc == 2 && strcmp(argv[1], "-h")==0) //help command 
+   
+    {
+        cout<<"The main purpose of this program is to how to use & Declare Different way to initialize the private member variables in a class"<<endl;
+    }
+    else {
+	for (int i = 1; i < argc; ++i) {
+		cout << argv[i]<<' ' ;
+		
+    
+   if(((strlen(argv[i]))==1) && (*argv[i]>='a'&& *argv[i]<='z') || (*argv[i]>='A' && *argv[i]<='Z'))
+   {
+       cout<<sizeof(char);
+   }
+   else if((strlen(argv[i]))!=1)
+   {
+       cout<<sizeof(string);
+   }
+    
+   else if(atoi(argv[i])>=0 && atoi(argv[i])<=9)
+   {
+       cout<<sizeof(int);
+   }
+   else if((atoi(argv[i]))==(atof(argv[i])) )
+   {
+       cout<<sizeof(double);
+   }
+   cout << "\n" ;
 	}
-	else
-	{
-	 
-// cout<<argv[i].size()<<endl;
-ch=atoi(argv[i]);
-          if((ch==1))
-	   {
-	   cout<<sizeof(char);
-	   }
-	   else
-	   {
-	   cout<<sizeof(wchar_t);
-	   }
-	}
-  }
+	return 0; 
 }
-
-       
-
-    return 0; 
 } 

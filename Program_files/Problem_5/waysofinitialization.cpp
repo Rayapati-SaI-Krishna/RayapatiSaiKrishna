@@ -11,6 +11,8 @@ class init//class Declaration
     { }
     init(int a1,double b1):c{a1},d{b1}//directly initialize our member variables
     { }
+    friend int add(init);//friend function
+
     void print()//print function
     {
         cout<<c<<endl<<d<<endl;
@@ -22,6 +24,12 @@ class init//class Declaration
         
     }
 };
+int add(init ob)
+{ 
+    ob.a+=10;
+    return ob.a;
+    
+}
 int main(int argc,char **argv)
 {
     
@@ -35,7 +43,8 @@ int main(int argc,char **argv)
         init ob;
         ob.display();// trying to access private data member directly outside the class
         init init{10,20.12};//c=10,d=20.12
-        init.print();//
+        init.print();
+        cout<<"sum is:"<<add(ob);
         
     }
     return 0;

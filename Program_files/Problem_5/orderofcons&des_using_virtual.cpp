@@ -26,7 +26,7 @@ int main(int argc,char **argv)
       if(argc == 2 && strcmp(argv[1], "-h")==0) //help command 
    
     {
-        cout<<"The main purpose of this program is to how to use & Declare the Local & Global scope variable"<<endl;
+        cout<<"The main purpose of this program is to how to use & Declare the order of constructor and destructor using virtual function"<<endl;
     }
     else
     {

@@ -35,7 +35,11 @@ int main(int argc, char **argv)
             {
                 cout << " Integer " << sizeof(int);
             }
+            else {
+                cout<<"Invalid Input";
+            }
             cout << "\n";
         }
         return 0;
     }
+}

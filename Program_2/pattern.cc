@@ -3,9 +3,9 @@
 #include<string.h>
 using namespace std;
 int x=0;
-void operation(int m,int n,char **a,int choice,int diag)
+void operation(int m,int n,char **arr,int choice,int diag)
 {
-    int t[n],i,j,r,c,r1,c1,rows;
+    int a_index[n],i,j,r,c,r1,c1,rows;
     if(diag == 2)
         rows=2;
     else
@@ -14,39 +14,39 @@ void operation(int m,int n,char **a,int choice,int diag)
     {
         for (j = 0; j < n; j++)
 	    {
-	        t[j] = j;
+	        a_index[j] = j;
 	    }
 	    for (j = 0; j < n - 1; j++)
 	    {
 	        if(choice==0) //If condition
 	        {
 	            r = i;
-	            c = t[j];     //assigning values
+	            c = a_index[j];     //assigning values
 	            r1 = i;
-	            c1 = t[j + 1];
+	            c1 = a_index[j + 1];
 	        }
 	        else
 	        {
 	            c = i;
-	            r = t[j];
+	            r = a_index[j];
 	            c1 = i;
-	            r1 = t[j + 1];
+	            r1 = a_index[j + 1];
 	        }
-	        if (a[r][c] == a[r1][c1])
+	        if (arr[r][c] == arr[r1][c1])
 	    	{
-		        t[j + 1] = j;
+		        a_index[j + 1] = j;
 		    }
 	    }
 
         int p = 0;
         for (j = 0; j < n; j++)
 	    {
-	        if (t[j] == j)
+	        if (a_index[j] == j)
 	       {
 	           if(choice==0)
-	                a[i][p] = a[i][j];
+	                arr[i][p] = arr[i][j];
 	           else
-	                a[p][i] = a[j][i];
+	                arr[p][i] = arr[j][i];
 	            p++;
 	       }
 	    }
@@ -54,9 +54,9 @@ void operation(int m,int n,char **a,int choice,int diag)
 	    {
 	        x=1;
 	        if(choice==0)
-	            a[i][p] = '*';
+	            arr[i][p] = '*';
 	       else
-	        a[p][i] = '*';
+	        arr[p][i] = '*';
 	        p++;
 
 	    }
@@ -64,14 +64,14 @@ void operation(int m,int n,char **a,int choice,int diag)
 }
 
 
-void print(char **a,int m,int n) //Print Function
+void print(char **arr,int m,int n) //Print Function
 {
     int i,j;
     for (i = 0; i < m; i++)
 	{
 	  for (j = 0; j < n; j++)
 	    {
-	      cout << a[i][j] <<" ";
+	      cout << arr[i][j] <<" ";
 	    }
 	    cout << "\n";
 	}
@@ -104,21 +104,21 @@ int main (int argc,char **argv)
     if(choice>=0&&choice<=2)
     {
         if((choice==0 && n>1) || (choice==1 && m>1) || (choice==2 && (m==n))){
-    char **a;//pointer to pointer character array
+    char **arr;//pointer to pointer character array
     int i, j;
-    a = new char *[n];//allocate n objects of type char
+    arr = new char *[n];//allocate n objects of type char
 //Entering the input values//
     for (i = 0; i < m; i++)
     {
-        a[i] = new char[n];
+        arr[i] = new char[n];
         for(j=0;j<n;j++)
         {
          cout << "Enter " << i << j << " element:\n";
-            cin >> a[i][j];
+            cin >> arr[i][j];
         }
     }
     cout << "Input is \n";
-    print(a,m,n);//call the print function to display input
+    print(arr,m,n);//call the print function to display input
     if(choice == 2)
     {
         char *b[2];
@@ -130,9 +130,9 @@ int main (int argc,char **argv)
             for(j=0;j<n;j++)
             {
                 if(i==j)
-                    b[0][p0++] = a[i][j];
+                    b[0][p0++] = arr[i][j];
                 if((i + j) == (n - 1))
-                    b[1][p1++] = a[i][j];
+                    b[1][p1++] = arr[i][j];
             }
         }
         operation(m,n,b,0,2);//call to perform operation
@@ -142,21 +142,21 @@ int main (int argc,char **argv)
             for(j=0;j<n;j++)
             {
                 if(i==j)
-                     a[i][j] = b[0][p0++];
+                     arr[i][j] = b[0][p0++];
                 if((i + j) == (n - 1))
-                    a[i][j] = b[1][p1++];
+                    arr[i][j] = b[1][p1++];
             }
         }
     }
     else
-        operation(m,n,a,choice,1);
+        operation(m,n,arr,choice,1);
     cout << "\nOutput is \n";
     //cout<<x<<"\n";
     if(x==0){
         cout<<"There is nothing to change.Because consecutive numbers are not present.";
     }
     else{
-        print(a,m,n);
+        print(arr,m,n);
     }
     }
     else
@@ -164,6 +164,10 @@ int main (int argc,char **argv)
         cout<<"Invalid Request";
     }
     }
+else
+    {
+        cout<<"Invalid Request";
     }
+}
   return 0;
 }
